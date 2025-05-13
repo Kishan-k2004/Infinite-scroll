@@ -1,12 +1,80 @@
-# React + Vite
+📸 Infinite Scroll Photo Gallery
+A responsive photo gallery web application built with React, Tailwind CSS, and Vite that fetches curated images from the Pexels API. It supports infinite scroll and uses Masonry layout to display images beautifully.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Live Demo
+https://infinite-scroll-ashen-eta.vercel.app
 
-Currently, two official plugins are available:
+📦 Tech Stack
+React 19
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vite
 
-## Expanding the ESLint configuration
+Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React Masonry CSS
+
+Pexels API (via fetch, no SDK)
+
+Framer Motion (optional animations)
+
+Styled Components (used in card layout)
+
+📷 Features
+📸 Fetches high-quality curated images from the Pexels API
+
+🔁 Infinite scroll for seamless image loading
+
+🧱 Responsive masonry layout
+
+⚡ Fast Vite bundler
+
+🌗 Clean and modern UI using Tailwind CSS
+
+🔑 Setup Instructions
+1. Clone the repository
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/photo-gallery.git
+cd photo-gallery
+2. Install dependencies
+bash
+Copy
+Edit
+npm install
+3. Create .env file
+ini
+Copy
+Edit
+VITE_Api_Key=your_pexels_api_key_here
+You can get your API key from pexels.com/api.
+
+4. Start the dev server
+bash
+Copy
+Edit
+npm run dev
+
+📁 Folder Structure
+bash
+Copy
+Edit
+src/
+│
+├── components/
+│   ├── Api.jsx          # Main component fetching photos
+│   ├── Card.jsx         # Individual photo card
+│   ├── Loader.jsx       # Loading spinner
+|   |── Api.css
+|   |── App.css
+│
+├── Home.jsx
+├── main.jsx
+├── index.css
+
+🧱 Masonry Layout
+Implemented using react-masonry-css for a responsive, Pinterest-style grid.
+
+📜 License
+All license to Kishan Khansali
+
