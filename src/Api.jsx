@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
 import Masonry from 'react-masonry-css'
-import { createClient } from 'pexels'
 import Loader from './Loader'
 import Card from './Card'
 import './Api.css'
@@ -14,9 +13,16 @@ function Api() {
   const fetchApi = useCallback(async () => {
     setLoading(true)
     try {
-      const client = createClient(import.meta.env.VITE_Api_Key)
-      const response = await client.photos.curated({ per_page: 40, page: pageNo })
-      setData((prev) => [...prev, ...response.photos])
+      const response = await fetch(
+        `https://api.pexels.com/v1/curated?per_page=40&page=${pageNo}`,
+        {
+          headers: {
+            Authorization: import.meta.env.VITE_Api_Key,
+          },
+        }
+      )
+      const result = await response.json()
+      setData((prev) => [...prev, ...result.photos])
     } catch (error) {
       console.log(error)
     } finally {
@@ -43,28 +49,26 @@ function Api() {
   }, [loading])
 
   const breakpointColumnsObj = {
-  default: 6,
-  1100: 4,
-  700: 3,
-  500: 2
+    default: 6,
+    1100: 4,
+    700: 3,
+    500: 2,
   }
-
 
   return (
     <div>
       <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid p-4"
-      columnClassName="my-masonry-grid_column"
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid p-4"
+        columnClassName="my-masonry-grid_column"
       >
         {data.map((photo) => (
-        <Card key={photo.id} photo={photo} />
+          <Card key={photo.id} photo={photo} />
         ))}
       </Masonry>
 
-
       {loading && (
-        <div className='flex justify-center items-center py-6'>
+        <div className="flex justify-center items-center py-6">
           <Loader />
         </div>
       )}
